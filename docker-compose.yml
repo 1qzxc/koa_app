@@ -2,10 +2,12 @@ version: "3.9"
 services:
   front:
     build: frontend/.
+    container_name: frontend_lists_container
     ports:
       - "3001:3001"
   back:
     build: backend/.
+    container_name: backend_lists_container
     ports:
       - "3002:3002"
     command: npm start
@@ -23,8 +25,8 @@ services:
     ports:
       - "5433:5432"
     networks:
-      - postgres
+      - postgres2
     restart: unless-stopped
 
 networks:
-  postgres:
+  postgres2:

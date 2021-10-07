@@ -4,6 +4,7 @@ WORKDIR /app
 COPY package.json .
 RUN npm install
 #COPY . .
+#RUN DATABASE_URL=postgres://postgres:docker@localhost:5433/postgres npm run migrate up
 COPY . .
 #CMD ["npm", "start"]
 EXPOSE 3002
