@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  front:
+    build: frontend/.
+    ports:
+      - "3001:3001"
+  back:
+    build: backend/.
+    ports:
+      - "3002:3002"
+    command: npm start
+    depends_on:
+      - postgres
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-docker}
+      PGDATA: /data/postgres
+    volumes:
+       - ./postgres:/data/postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
