@@ -1,3 +1,3 @@
-sudo DATABASE_URL=postgres://postgres:docker@localhost:5432/postgres npm run migrate up
+DATABASE_URL=postgres://postgres:docker@postgres:5432/postgres npm run migrate up
 
 sudo docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres

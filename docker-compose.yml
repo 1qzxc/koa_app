@@ -5,6 +5,8 @@ services:
     container_name: frontend_lists_container
     ports:
       - "3001:3001"
+    networks:
+      - postgres2
   back:
     build: backend/.
     container_name: backend_lists_container
@@ -13,6 +15,8 @@ services:
     command: npm start
     depends_on:
       - postgres
+    networks:
+      - postgres2
   postgres:
     container_name: postgres_container_lists
     image: postgres
