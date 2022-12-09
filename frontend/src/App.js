@@ -8,6 +8,9 @@ import { Container, Row, Col } from 'reactstrap'
 import ModalForm from './Component/Modals/Modal.js'
 import DataTable from './Component/Tables/DataTable.js'
 
+import { hostname } from './config';
+
+
 class App extends Component {
     state = {
 	  items:[]
@@ -15,7 +18,7 @@ class App extends Component {
 
     getItems(){
 		console.log(" get items this.props.match.params.id : " + this.props.match.params.id)
-	    fetch('http://morozovme.com:3002/posts/' + this.props.match.params.id)
+	    fetch('http://' + hostname + ':3002/posts/' + this.props.match.params.id)
 		    .then(response => response.json())
 		    .then(items => this.setState({items}))
 			.catch(err => console.log(err));

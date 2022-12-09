@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+import { hostname } from '../../config';
 
 export default class Post extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class Post extends Component {
 
   async loadPosts()
   {
-    const promise = await axios.get("http://morozovme.com:3002/posts/" + this.props.match.params.id);
+    const promise = await axios.get("http://" + hostname + ":3002/posts/" + this.props.match.params.id);
     const status = promise.status;
     if(status===200)
     {

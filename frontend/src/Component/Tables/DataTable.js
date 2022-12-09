@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
-import ModalForm from '../Modals/Modal'
+import ModalForm from '../Modals/Modal';
+import { hostname } from '../../config';
+
 
 class DataTable extends Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class DataTable extends Component {
     if(confirmDelete){
       console.log("delete this.state.listid : " + this.state.listid)
       console.log("id var : " + id)
-      fetch('http://morozovme.com:3002/posts/' + this.state.listid, {
+      fetch('http://' + hostname + ':3002/posts/' + this.state.listid, {
       method: 'delete',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
